@@ -1,30 +1,17 @@
-import { Box, Paper, Table } from '@mantine/core';
-import SubpageContainer from 'components/containers/subpage-container';
-import SubpageTableHeader from 'components/headers/subpage-table.header';
+import MainTable from 'components/table/main-table';
+import {getBasePath} from 'lib/route-handle';
+import BaptismalItem from 'pages/baptismal/baptismal-item';
 import {BaptismalResponseInterface} from 'pages/baptismal/baptismal.interface';
-import BaptismalItem from 'pages/baptismal/baptismal.item';
-import { getBaptisms } from 'pages/baptismal/baptismal.thunks';
-import { useQuery } from 'react-query';
 import {useLoaderData} from 'react-router-dom';
 
 export default function Baptismal() {
-  const data = useLoaderData() as BaptismalResponseInterface
+  const data = useLoaderData() as BaptismalResponseInterface;
+  const headers = ['Name', 'Birth Date','Created Date', 'Last Updated', 'Print', 'Delete'];
+  const basePath = getBasePath('baptismal');
 
   return (
-    <SubpageContainer header={<SubpageTableHeader>Baptismal Certificates</SubpageTableHeader>}>
-      <Table>
-        <thead>
-        <tr>
-          <th>Name</th>
-          <th>Birth Date</th>
-          <th>Last Updated</th>
-          <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <BaptismalItem data={data} />
-        </tbody>
-      </Table>
-    </SubpageContainer>
+    <MainTable basePath={basePath} title="Baptismal Certificates" headers={headers}>
+      <BaptismalItem basePath={basePath} data={data} />
+    </MainTable>
   );
 }

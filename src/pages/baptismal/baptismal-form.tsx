@@ -1,13 +1,13 @@
-import { Button } from '@mantine/core';
-import { useForm } from '@mantine/form';
+import {Button} from '@mantine/core';
+import {useForm} from '@mantine/form';
 import SubpageContainer from 'components/containers/subpage-container';
-import { formGenerator } from 'components/form-generator/form-generator';
-import { customJoi } from 'lib/joi';
+import {formGenerator} from 'components/form-generator/form-generator';
+import {customJoi} from 'lib/joi';
 import baptismalFields from 'pages/baptismal/baptismal.fields';
-import { BaptismalInterface } from 'pages/baptismal/baptismal.interface';
-import { baptismalSchema } from 'pages/baptismal/baptismal.schema';
-import { saveBirth } from 'pages/baptismal/baptismal.thunks';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import {BaptismalInterface} from 'pages/baptismal/baptismal.interface';
+import {baptismalSchema} from 'pages/baptismal/baptismal.schema';
+import {addBirth, updateBirth} from 'pages/baptismal/baptismal.thunks';
+import {useLoaderData, useNavigate} from 'react-router-dom';
 
 export default function BaptismalForm() {
   const navigate = useNavigate();
@@ -17,16 +17,21 @@ export default function BaptismalForm() {
     validate: customJoi(baptismalSchema),
   });
 
-  const onSubmit = async (values: BaptismalInterface) => {
+  const hasId = Object.hasOwn(data, '_id');
+  const header = hasId ? 'Update' : 'New';
 
-    const res = await saveBirth(values);
+  const onSubmit = async (values: BaptismalInterface) => {
+    const upsert = hasId ? updateBirth : addBirth;
+    const res = await upsert(values);
     if (res) {
-      navigate('/baptism');
+      navigate('/baptismal');
     }
   };
 
+
+
   return (
-    <SubpageContainer header="Add New Baptismal">
+    <SubpageContainer header={`${header} Baptismal`}>
       <form onSubmit={form.onSubmit((values) => onSubmit(values))}>
         {formGenerator(baptismalFields, form)}
         <Button mt="xl" type="submit">

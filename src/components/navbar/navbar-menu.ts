@@ -9,7 +9,7 @@ import {
 } from '@tabler/icons';
 
 export const navbarMenu = [
-    { link: 'baptism', label: 'Baptismal Certificates', icon: IconUser },
+    { link: 'baptismal', label: 'Baptismal Certificates', icon: IconUser },
     { link: 'billing', label: 'Billing', icon: IconReceipt2 },
     { link: 'security', label: 'Security', icon: IconFingerprint },
     { link: 'ssh', label: 'SSH Keys', icon: IconKey },
