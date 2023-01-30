@@ -1,21 +1,28 @@
-import { initialPerson } from 'lib/person';
-import { BaptismalInterface } from 'pages/baptismal/baptismal.interface';
-import { deleteSilentFetch, getFetch, postSilentFetch, putSilentFetch } from 'request/request';
+import {LoaderFunctionArgs} from '@remix-run/router/utils';
+import {initialPerson} from 'lib/person';
+import {BaptismalConfirmation, BaptismalInterface} from 'pages/baptismal/baptismal.interface';
+import {deleteSilentFetch, getFetch, postSilentFetch, putSilentFetch} from 'request/request';
 
-export const getBaptisms = async ({ params: { page = 1 } }) => {
-  return await postSilentFetch('/certificates/birth/page/', { page });
+export const getBaptisms = async function (type: BaptismalConfirmation,baptismalPaginationParams:LoaderFunctionArgs) {
+  const { params:{page} } = baptismalPaginationParams;
+  return await postSilentFetch(`/certificates/birth/page/`, { page,type });
 };
 
-export const getBaptismal = async ({ params: { id = 'new' } }) => {
+export const getBaptismal = async function (type: BaptismalConfirmation, baptismalParams: LoaderFunctionArgs) {
+  const {
+    params: { id = 'new' },
+  } = baptismalParams;
+
   if (id !== 'new') {
-    return await getFetch('/certificates/birth/' + id);
+    return await getFetch(`/certificates/birth/${id}`);
   } else {
     return {
-      certificateType: 'birth',
+      certificateType: type,
       firstName: '',
       lastName: '',
       birthDate: new Date(),
       occasionDate: new Date(),
+      occasionType: type,
       address: '',
       parent1: initialPerson,
       parent2: initialPerson,

@@ -16,7 +16,7 @@ export function DashboardHeader() {
       <div className={classes.inner}>
         <Group>
           <Burger opened={!isSidebarOpen} onClick={() => setSidebarOpen(!isSidebarOpen)} size="sm" />
-          Logo
+          Our Lady Of the Sacred Heart Parish
         </Group>
       </div>
     </Header>

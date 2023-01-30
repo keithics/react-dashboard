@@ -1,33 +1,38 @@
+import {LoaderFunctionArgs} from '@remix-run/router/utils';
 import Baptismal from 'pages/baptismal/baptismal';
 import BaptismalForm from 'pages/baptismal/baptismal-form';
-import { getBaptismal, getBaptisms } from 'pages/baptismal/baptismal.thunks';
+import {BaptismalConfirmation} from 'pages/baptismal/baptismal.interface';
+import {getBaptismal, getBaptisms} from 'pages/baptismal/baptismal.thunks';
 import React from 'react';
-import { RouteObject } from 'react-router-dom';
+import {RouteObject} from 'react-router-dom';
 
-const common = {
-  loader: getBaptismal,
-  handle: {
-    basePath: '/baptismal',
-  },
-};
-export const baptismalRoutes: RouteObject[] = [
-  {
-    path: 'baptismal/:page?',
-    id: 'baptismal',
-    loader: getBaptisms,
-    element: <Baptismal />,
+export const baptismalRoutes = (type:BaptismalConfirmation): RouteObject[] => {
+  const common = {
+    loader: async (params:LoaderFunctionArgs) => getBaptismal(type, params),
     handle: {
-      basePath: '/baptismal',
+      basePath: `/${type}`,
     },
-  },
-  {
-    path: 'baptismal/edit/:id',
-    element: <BaptismalForm />,
-    ...common,
-  },
-  {
-    path: 'baptismal/new', // react router dom v6 doesnt support regex paths
-    element: <BaptismalForm />,
-    ...common,
-  },
-];
+  };
+
+  return [
+    {
+      path: `${type}/:page?`,
+      id: type,
+      loader: (params:LoaderFunctionArgs) => getBaptisms(type, params),
+      element: <Baptismal />,
+      handle: {
+        basePath: `/${type}`,
+      },
+    },
+    {
+      path: `${type}/edit/:id`,
+      element: <BaptismalForm />,
+      ...common,
+    },
+    {
+      path: `${type}/new`, // react router dom v6 doesnt support regex paths
+      element: <BaptismalForm />,
+      ...common,
+    },
+  ];
+};

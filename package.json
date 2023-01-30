@@ -7,7 +7,12 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "pretty": "npx prettier --write ./src"
+    "pretty": "npx prettier --write ./src",
+    "d-build": "docker build -t op-web2 . --build-arg REACT_APP_API=http://localhost:8081",
+    "d-run": " docker run -it --rm -p 8080:8080 op-web2",
+    "d-tag": "docker tag op-web2:latest dockerkeithics/op-web2:latest",
+    "d-push": "docker push dockerkeithics/op-web2:latest",
+    "d": "npm run d-build && npm run d-tag && npm run d-push"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",

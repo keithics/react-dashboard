@@ -1,6 +1,23 @@
 import { PersonInterface } from 'common/interfaces/person.interface';
 import { PrettyDateInterface } from 'common/interfaces/pretty-date.interface';
 
+export enum BaptismalConfirmation {
+  BAPTISMAL ='baptismal',
+  CONFIRMATION = 'confirmation'
+}
+
+export interface BaptismalParams{
+  params: {
+     id: string;
+  }
+}
+
+export interface BaptismalPaginationParams{
+  params: {
+    page: string;
+  }
+}
+
 export interface BaptismalResponseInterface {
   currenPage: number;
   docs: BaptismalInterface[];

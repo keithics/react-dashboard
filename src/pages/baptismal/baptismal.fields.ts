@@ -1,6 +1,15 @@
-import {FormGeneratorInterface, FormType} from 'components/form-generator/form-generator.interface';
+import { FormGeneratorInterface, FormType } from 'components/form-generator/form-generator.interface';
 
 const fields: FormGeneratorInterface[] = [
+  {
+    name: 'certificateType',
+    type: FormType.SELECT,
+    data: [
+      { label: 'Baptism', value: 'baptismal' },
+      { label: 'Confirmation', value: 'confirmation' },
+    ],
+    span:12
+  },
   { name: 'firstName' },
   { name: 'lastName' },
   { name: 'birthDate', type: FormType.DATE },

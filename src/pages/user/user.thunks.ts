@@ -2,13 +2,13 @@ import {ForgotPasswordInterface, LoginInterface, RegisterInterface, UserInterfac
 import {postFetch, postSilentFetch} from 'request/request';
 
 export const register = async (values: RegisterInterface) => {
-  return postFetch(`/users/register/`, values, 'Please check your email for confirmation');
+  return postFetch(`/register/`, values, 'Please check your email for confirmation');
 };
 
 export const login = async (values: LoginInterface): Promise<UserInterface> => {
-  return postSilentFetch(`/users/login`, values);
+  return postSilentFetch(`/login`, values);
 };
 
 export const forgot = async (values: ForgotPasswordInterface) => {
-  return postSilentFetch(`/users/forgot/`, values);
+  return postSilentFetch(`/forgot/`, values);
 };

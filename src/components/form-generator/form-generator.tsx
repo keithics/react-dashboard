@@ -1,4 +1,4 @@
-import {Grid, NumberInput, TextInput} from '@mantine/core';
+import {Grid, NumberInput, Select, SelectProps, TextInput} from '@mantine/core';
 import {UseFormReturnType} from '@mantine/form';
 import {IconCalendar} from '@tabler/icons';
 import {FormGeneratorInterface, FormType} from 'components/form-generator/form-generator.interface';
@@ -6,6 +6,7 @@ import DateInput from 'components/form-inputs/date-input';
 import {dateFormat} from 'config';
 import {snakeToCapitalize} from 'lib/helpers';
 
+// todo separate each component type to a different file using dynamic imports
 function getFormField(form: UseFormReturnType<any>, formValues: FormGeneratorInterface) {
   const name = formValues.name;
   const formLabel = formValues.label || snakeToCapitalize(name);
@@ -13,13 +14,10 @@ function getFormField(form: UseFormReturnType<any>, formValues: FormGeneratorInt
   const isRequired = formValues.isOptional !== true;
   switch (type) {
     case FormType.NUMBER:
-      return (
-        <NumberInput
-          label={formLabel}
-          withAsterisk={isRequired}
-          {...form.getInputProps(name)}
-        />
-      );
+      return <NumberInput label={formLabel} withAsterisk={isRequired} {...form.getInputProps(name)} />;
+    case FormType.SELECT:
+      const selectInput = formValues as SelectProps
+      return <Select {...selectInput} withAsterisk={isRequired} label={formLabel} {...form.getInputProps(name)} />;
     case FormType.DATE:
       return (
         <DateInput
