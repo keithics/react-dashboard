@@ -1,5 +1,5 @@
 # build environment
-FROM node:16.19.0-alpine AS build
+FROM node:18.14.0-alpine AS build
 ARG REACT_APP_API
 
 WORKDIR /app
