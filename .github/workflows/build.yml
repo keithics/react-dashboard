@@ -6,15 +6,45 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  sonarcloud:
-    name: SonarCloud
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 15.x ]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: SonarCloud Scan
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
+
+      - name: SonarCloud
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          fetch-depth: 0
+          projectBaseDir: src/pages
+          args: >
+            -Dsonar.organization=keithics_react-dashboard
+            -Dsonar.projectKey=keithics-1
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info  
+            -Dsonar.source=src/components
+
+      - name: SonarCloud2
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          fetch-depth: 0
+          projectBaseDir: src/components
+          args: >
+            -Dsonar.organization=keithics_react-dashboard
+            -Dsonar.projectKey=keithics-1
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info  
+            -Dsonar.source=src/pages

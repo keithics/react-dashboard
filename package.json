@@ -12,7 +12,8 @@
     "d-run": " docker run -it --rm -p 8080:8080 op-web2",
     "d-tag": "docker tag op-web2:latest dockerkeithics/op-web2:latest",
     "d-push": "docker push dockerkeithics/op-web2:latest",
-    "d": "npm run d-build && npm run d-tag && npm run d-push"
+    "d": "npm run d-build && npm run d-tag && npm run d-push",
+    "test": "jest --coverage"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -39,12 +40,15 @@
     "redux-thunk": "^2.4.2"
   },
   "devDependencies": {
+    "@types/jest": "^29.4.0",
     "@types/js-cookie": "^3.0.2",
     "@types/node": "^18.11.16",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "@vitejs/plugin-react-swc": "^3.0.0",
+    "jest": "^29.4.2",
     "prettier": "^2.8.1",
+    "ts-jest": "^29.0.5",
     "typescript": "^4.9.3",
     "vite": "^4.0.0"
   }
