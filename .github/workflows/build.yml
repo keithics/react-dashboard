@@ -34,6 +34,7 @@ jobs:
             -Dsonar.projectKey=keithics-1
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info  
             -Dsonar.source=src/components
+            -Dsonar.pullrequest.github.summary_comment=true
 
       - name: SonarCloud2
         uses: SonarSource/sonarcloud-github-action@master
