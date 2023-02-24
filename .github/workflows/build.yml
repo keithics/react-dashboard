@@ -20,24 +20,31 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
+
       - name: SonarCloud
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        args: >
-          -Dsonar.organization=keithics_react-dashboard
-          -Dsonar.projectKey=keithics-1
-          -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info  
-          -Dsonar.source=src/components
+        with:
+          fetch-depth: 0
+          projectBaseDir: packages/api
+          args: >
+            -Dsonar.organization=keithics_react-dashboard
+            -Dsonar.projectKey=keithics-1
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info  
+            -Dsonar.source=src/components
 
       - name: SonarCloud2
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        args: >
-          -Dsonar.organization=keithics_react-dashboard
-          -Dsonar.projectKey=keithics-1
-          -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info  
-          -Dsonar.source=src/pages
+        with:
+          fetch-depth: 0
+          projectBaseDir: packages/api
+          args: >
+            -Dsonar.organization=keithics_react-dashboard
+            -Dsonar.projectKey=keithics-1
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info  
+            -Dsonar.source=src/pages
