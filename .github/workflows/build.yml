@@ -28,7 +28,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           fetch-depth: 0
-          projectBaseDir: packages/api
+          projectBaseDir: src/pages
           args: >
             -Dsonar.organization=keithics_react-dashboard
             -Dsonar.projectKey=keithics-1
@@ -42,7 +42,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           fetch-depth: 0
-          projectBaseDir: packages/api
+          projectBaseDir: src/components
           args: >
             -Dsonar.organization=keithics_react-dashboard
             -Dsonar.projectKey=keithics-1
