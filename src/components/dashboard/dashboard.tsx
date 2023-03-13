@@ -10,7 +10,7 @@ import {useAppSelector} from 'rtk/hooks';
 
 export  default function Dashboard() {
     const isSidebarOpen = useAppSelector(selectSidebarOpen);
-
+    // toggle sidebar
     const nav = isSidebarOpen ? <Navigationbar /> : <NavbarCollapse />;
     return (
         <AppShell
