@@ -8,7 +8,7 @@ const fields: FormGeneratorInterface[] = [
       { label: 'Baptism', value: 'baptismal' },
       { label: 'Confirmation', value: 'confirmation' },
     ],
-    span:12
+    span: 12,
   },
   { name: 'firstName' },
   { name: 'lastName' },

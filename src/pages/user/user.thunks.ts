@@ -1,5 +1,5 @@
-import {ForgotPasswordInterface, LoginInterface, RegisterInterface, UserInterface,} from 'pages/user/user.interface';
-import {postFetch, postSilentFetch} from 'request/request';
+import { ForgotPasswordInterface, LoginInterface, RegisterInterface, UserInterface } from 'pages/user/user.interface';
+import { postFetch, postSilentFetch } from 'request/request';
 
 export const register = async (values: RegisterInterface) => {
   return postFetch(`/register/`, values, 'Please check your email for confirmation');

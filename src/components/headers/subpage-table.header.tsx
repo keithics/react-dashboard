@@ -1,7 +1,7 @@
 import { Button } from '@mantine/core';
 import { useCommonStyles } from 'common/styles/common.styles';
 import SubpageHeader from 'components/headers/subpage.header';
-import {ReactNode} from 'react';
+import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 
 function SubpageTableHeader({ children, link = 'new' }: { children: ReactNode; link?: string }) {

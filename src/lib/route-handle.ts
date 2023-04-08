@@ -1,5 +1,5 @@
-import {HandleInterface} from 'common/interfaces/route-handle.interface';
-import {useMatches} from 'react-router-dom';
+import { HandleInterface } from 'common/interfaces/route-handle.interface';
+import { useMatches } from 'react-router-dom';
 
 // https://github.com/remix-run/react-router/discussions/9812
 export function getRouteHandleById(id: string): unknown {

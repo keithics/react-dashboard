@@ -1,11 +1,13 @@
-import {LoaderFunctionArgs} from '@remix-run/router/utils';
-import {initialPerson} from 'lib/person';
-import {BaptismalConfirmation, BaptismalInterface} from 'pages/baptismal/baptismal.interface';
-import {deleteSilentFetch, getFetch, postSilentFetch, putSilentFetch} from 'request/request';
+import { LoaderFunctionArgs } from '@remix-run/router/utils';
+import { initialPerson } from 'lib/person';
+import { BaptismalConfirmation, BaptismalInterface } from 'pages/baptismal/baptismal.interface';
+import { deleteSilentFetch, getFetch, postSilentFetch, putSilentFetch } from 'request/request';
 
-export const getBaptisms = async function (type: BaptismalConfirmation,baptismalPaginationParams:LoaderFunctionArgs) {
-  const { params:{page} } = baptismalPaginationParams;
-  return await postSilentFetch(`/certificates/birth/page/`, { page,type });
+export const getBaptisms = async function (type: BaptismalConfirmation, baptismalPaginationParams: LoaderFunctionArgs) {
+  const {
+    params: { page },
+  } = baptismalPaginationParams;
+  return await postSilentFetch(`/certificates/birth/page/`, { page, type });
 };
 
 export const getBaptismal = async function (type: BaptismalConfirmation, baptismalParams: LoaderFunctionArgs) {

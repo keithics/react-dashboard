@@ -1,5 +1,5 @@
 import { Action, combineReducers, configureStore, ThunkAction } from '@reduxjs/toolkit';
-import {sidebarReducer} from 'components/navbar/navbar.slice';
+import { sidebarReducer } from 'components/navbar/navbar.slice';
 import { requestReducer } from 'request/request.slice';
 import { userReducer } from 'pages/user/user.slice';
 import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';

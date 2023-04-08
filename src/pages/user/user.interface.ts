@@ -1,7 +1,7 @@
 export interface LoginInterface {
   email: string;
   password: string;
-  rememberMe?: boolean
+  rememberMe?: boolean;
 }
 
 export interface RegisterInterface extends LoginInterface {

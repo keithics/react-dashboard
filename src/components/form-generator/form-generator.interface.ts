@@ -1,4 +1,4 @@
-import {SelectProps} from '@mantine/core';
+import { SelectProps } from '@mantine/core';
 
 export enum FormType {
   INPUT = 'input',
@@ -15,10 +15,12 @@ export interface BaseGeneratorInterface {
   isOptional?: boolean;
 }
 
-export type FormGeneratorInterface = BaseGeneratorInterface | DateFormGeneratorInterface | (SelectProps & BaseGeneratorInterface);
+export type FormGeneratorInterface =
+  | BaseGeneratorInterface
+  | DateFormGeneratorInterface
+  | (SelectProps & BaseGeneratorInterface);
 
 export interface DateFormGeneratorInterface extends BaseGeneratorInterface {
   inputFormat?: string;
   labelFormat?: string;
 }
-

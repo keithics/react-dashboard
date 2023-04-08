@@ -1,6 +1,6 @@
-import {Tooltip, UnstyledButton} from '@mantine/core';
-import {NavbarLinkProps} from 'components/dashboard/dashboard.interface';
-import {dasboardNavbarCollapseStyle} from 'components/dashboard/dashboard.styles';
+import { Tooltip, UnstyledButton } from '@mantine/core';
+import { NavbarLinkProps } from 'components/dashboard/dashboard.interface';
+import { dasboardNavbarCollapseStyle } from 'components/dashboard/dashboard.styles';
 
 export function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
   const { classes, cx } = dasboardNavbarCollapseStyle();

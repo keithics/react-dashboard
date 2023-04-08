@@ -1,13 +1,13 @@
-import { ActionIcon, Anchor, Text } from '@mantine/core';
+import { ActionIcon, Anchor, Text, Button } from '@mantine/core';
 import { openConfirmModal } from '@mantine/modals';
 import { showNotification } from '@mantine/notifications';
 import { IconPrinter, IconTrash } from '@tabler/icons';
-import { friendlyDate } from 'lib/helpers';
+import { friendlyDate, getPrintLink } from 'lib/helpers';
 import { BaptismalResponseInterface } from 'pages/baptismal/baptismal.interface';
 import { deleteBirth } from 'pages/baptismal/baptismal.thunks';
 import { Link, useRevalidator } from 'react-router-dom';
 
-function BaptismalItem({ data,basePath }: { data: BaptismalResponseInterface,basePath:string }) {
+function BaptismalItem({ data, basePath }: { data: BaptismalResponseInterface; basePath: string }) {
   const revalidate = useRevalidator();
   const openDeleteModal = (id: string) =>
     openConfirmModal({
@@ -35,12 +35,14 @@ function BaptismalItem({ data,basePath }: { data: BaptismalResponseInterface,bas
               {row.firstName} {row.lastName}
             </Anchor>
           </td>
-          <td>{friendlyDate(row.birthDate)}</td>
+          <td>{friendlyDate(row.occasionDate)}</td>
           <td>{friendlyDate(row.createdAt!)}</td>
           <td>{friendlyDate(row.updatedAt!)}</td>
           <td width={20}>
             <ActionIcon color="green">
-              <IconPrinter size={18} />
+              <ActionIcon target="_blank" component="a" href={getPrintLink('baptismal', row._id as string)}>
+                <IconPrinter size={18} />
+              </ActionIcon>
             </ActionIcon>
           </td>
           <td width={20}>

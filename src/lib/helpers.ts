@@ -1,4 +1,5 @@
-import { format, parseISO } from "date-fns";
+import { format, parseISO } from 'date-fns';
+import { getToken } from './cookie.helper';
 
 export function getAllQueryString() {
   const urlSearchParams = new URLSearchParams(window.location.search);
@@ -32,5 +33,20 @@ export function snakeToCapitalize(string: string) {
     });
 }
 
+export const friendlyDate = (date: Date) => format(parseISO(date.toString()), 'MMM dd, yyyy');
 
-export const friendlyDate = (date: Date) => format(parseISO(date.toString()),'MMM dd, yyyy');
+export function getUserData(): any {
+  const data = localStorage.getItem('persist:root');
+  const { user } = JSON.parse(data as string);
+  return JSON.parse(user);
+}
+
+export function getApiUrl(): string {
+  return import.meta.env.VITE_REACT_APP_API;
+}
+
+export function getPrintLink(type: string, id: string): string {
+  const token = getToken();
+  const link = `${getApiUrl()}/certificates/birth/print/${id}/${type}/?auth_token=${token}`;
+  return link;
+}

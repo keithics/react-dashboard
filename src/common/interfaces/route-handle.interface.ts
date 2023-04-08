@@ -1,3 +1,3 @@
 export interface HandleInterface {
-    basePath: string;
+  basePath: string;
 }

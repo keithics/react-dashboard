@@ -1,4 +1,4 @@
 export const initialPerson = {
-    firstName:'',
-    lastName:'',
-}
+  firstName: '',
+  lastName: '',
+};

@@ -1,4 +1,4 @@
-import {AlertInterface} from 'components/alerts/alert.interface';
+import { AlertInterface } from 'components/alerts/alert.interface';
 import AlertError from 'components/alerts/error.alert';
 import AlertSuccess from 'components/alerts/success.alert';
 import AlertValidation from 'components/alerts/validation.alert';
@@ -7,7 +7,7 @@ import If from 'components/conditionals/if.conditional';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { resetRequest, selectRequest } from 'request/request.slice';
-import {useAppDispatch, useAppSelector} from 'rtk/hooks';
+import { useAppDispatch, useAppSelector } from 'rtk/hooks';
 
 // set messageOnly to true only get the message string
 function Alert({ messageOnly = false }: AlertInterface) {

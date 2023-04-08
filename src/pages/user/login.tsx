@@ -13,7 +13,7 @@ import {
 import { joiResolver, useForm } from '@mantine/form';
 import Alert from 'components/alerts/alert';
 import { setCookieToken } from 'lib/cookie.helper';
-import {customJoi} from 'lib/joi';
+import { customJoi } from 'lib/joi';
 import { LoginInterface } from 'pages/user/user.interface';
 import { setUserData } from 'pages/user/user.slice';
 import { login } from 'pages/user/user.thunks';

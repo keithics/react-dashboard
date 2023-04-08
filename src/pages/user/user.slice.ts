@@ -22,7 +22,7 @@ export const userSlice = createSlice({
     setUserData: (state: Draft<UserDataInterface>, action: PayloadAction<UserDataInterface>) => {
       return {
         ...state,
-        isLoggedIn:true
+        isLoggedIn: true,
       };
     },
   },
