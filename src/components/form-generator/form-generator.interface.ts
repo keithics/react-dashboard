@@ -6,6 +6,7 @@ export enum FormType {
   PERSON = 'person',
   NUMBER = 'number',
   SELECT = 'select',
+  UPLOAD = 'file',
 }
 export interface BaseGeneratorInterface {
   name: string;
