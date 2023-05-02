@@ -8,4 +8,5 @@ export interface SettingsInterface {
     headerLine6: string;
     currentPriest: string;
     currentPriestSignature: string;
+    logo: string;
 }

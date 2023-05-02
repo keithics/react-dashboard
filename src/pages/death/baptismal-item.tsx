@@ -1,11 +1,11 @@
-import {ActionIcon, Anchor, Text} from '@mantine/core';
-import {openConfirmModal} from '@mantine/modals';
-import {showNotification} from '@mantine/notifications';
-import {IconPrinter, IconTrash} from '@tabler/icons';
-import {friendlyDate, getPrintLink} from 'lib/helpers';
-import {BaptismalResponseInterface} from 'pages/baptismal/baptismal.interface';
-import {deleteBirth} from 'pages/baptismal/baptismal.thunks';
-import {Link, useRevalidator} from 'react-router-dom';
+import { ActionIcon, Anchor, Text, Button } from '@mantine/core';
+import { openConfirmModal } from '@mantine/modals';
+import { showNotification } from '@mantine/notifications';
+import { IconPrinter, IconTrash } from '@tabler/icons';
+import { friendlyDate, getPrintLink } from 'lib/helpers';
+import { BaptismalResponseInterface } from 'pages/baptismal/baptismal.interface';
+import { deleteBirth } from 'pages/baptismal/baptismal.thunks';
+import { Link, useRevalidator } from 'react-router-dom';
 
 function BaptismalItem({ data, basePath }: { data: BaptismalResponseInterface; basePath: string }) {
   const revalidate = useRevalidator();

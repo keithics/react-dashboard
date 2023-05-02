@@ -88,19 +88,29 @@ export const deleteSilentFetch = (url: string): Promise<any> => {
  * DO NOT USE THIS DIRECTLY, USE THE ABSTRACTION METHODS ABOVE INSTEAD
  * @private
  * @param url - url of the request
- * @param data - post body data
+ * @param formData
  * @param httpMethod - http method
  * @param dispatchSaveMessage - display save message
  * @param saveMessage = save message texts, default is "Saved"
  */
 const fetchRequest = (
   url: string,
-  data: unknown = null,
+  formData = null,
   httpMethod: string | null = null,
   dispatchSaveMessage = true,
   saveMessage: string | null = null
 ): Promise<any> => {
-  const method = httpMethod || (!data ? 'get' : 'post');
+  let data;
+  let contentTypeJson: null | { 'Content-Type': string } = { 'Content-Type': 'application/json' };
+  // upload , multi-part
+  console.log((formData as unknown) instanceof FormData);
+  if ((formData as unknown) instanceof FormData) {
+    data = formData;
+    contentTypeJson = null; // important
+  } else {
+    data = formData ? JSON.stringify(formData) : null;
+  }
+  const method = httpMethod || (!formData ? 'get' : 'post');
   const token = getToken();
 
   store.dispatch(resetRequest());
@@ -110,10 +120,10 @@ const fetchRequest = (
     method,
     mode: 'cors',
     headers: {
-      'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
+      ...contentTypeJson,
     },
-    body: data ? JSON.stringify(data) : null,
+    body: data,
   })
     .then((response) => {
       store.dispatch(isRequestFinished());
@@ -129,6 +139,7 @@ const fetchRequest = (
       } else if (response.status === 401) {
         store.dispatch(logout());
       } else {
+        console.log(response);
         store.dispatch(requestFailure());
       }
 
