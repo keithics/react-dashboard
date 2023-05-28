@@ -1,10 +1,10 @@
-import {FileInput, Grid, NumberInput, Select, SelectProps, TextInput} from '@mantine/core';
-import {UseFormReturnType} from '@mantine/form';
-import {IconCalendar} from '@tabler/icons';
-import {FormGeneratorInterface, FormType} from 'components/form-generator/form-generator.interface';
+import { FileInput, Grid, NumberInput, Select, SelectProps, TextInput } from '@mantine/core';
+import { UseFormReturnType } from '@mantine/form';
+import { IconCalendar } from '@tabler/icons';
+import { FormGeneratorInterface, FormType } from 'components/form-generator/form-generator.interface';
 import DateInput from 'components/form-inputs/date-input';
-import {dateFormat} from 'config';
-import {snakeToCapitalize} from 'lib/helpers';
+import { dateFormat } from 'config';
+import { snakeToCapitalize } from 'lib/helpers';
 
 // todo separate each component type to a different file using dynamic imports
 function getFormField(form: UseFormReturnType<any>, formValues: FormGeneratorInterface) {
@@ -55,7 +55,7 @@ function getFormField(form: UseFormReturnType<any>, formValues: FormGeneratorInt
           </Grid.Col>
         </Grid>
       );
-   case FormType.UPLOAD:
+    case FormType.UPLOAD:
       return <FileInput key={name} withAsterisk={isRequired} label={formLabel} {...form.getInputProps(name)} />;
     default:
       return <TextInput key={name} withAsterisk={isRequired} label={formLabel} {...form.getInputProps(name)} />;

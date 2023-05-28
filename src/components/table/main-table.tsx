@@ -1,12 +1,12 @@
 import { Pagination, Table } from '@mantine/core';
+import { ResponseInterface } from 'common/interfaces/request.interface';
 import SubpageContainer from 'components/containers/subpage-container';
 import SubpageTableHeader from 'components/headers/subpage-table.header';
 import { MainTableInterface } from 'components/table/main-table.interface';
-import { BaptismalResponseInterface } from 'pages/baptismal/baptismal.interface';
 import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 
-export default function MainTable({ basePath, title, headers, children, link }: MainTableInterface) {
-  const data = useLoaderData() as BaptismalResponseInterface;
+export default function MainTable<T>({ basePath, title, headers, children, link }: MainTableInterface) {
+  const data = useLoaderData() as ResponseInterface<T>;
   let { page } = useParams();
   const navigate = useNavigate();
   page ||= '1';

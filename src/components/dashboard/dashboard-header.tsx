@@ -2,7 +2,7 @@ import { Burger, Group, Header } from '@mantine/core';
 import { dashboardHeaderStyle } from 'components/dashboard/dashboard.styles';
 import { selectSidebarOpen, toggleSidebar } from 'components/navbar/navbar.slice';
 import { getApiUrl } from 'lib/helpers';
-import {selectUserData} from 'pages/user/user.slice';
+import { selectUserData } from 'pages/user/user.slice';
 import { useAppDispatch, useAppSelector } from 'rtk/hooks';
 
 export function DashboardHeader() {

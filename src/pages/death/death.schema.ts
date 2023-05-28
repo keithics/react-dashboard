@@ -10,7 +10,7 @@ export const deathSchema = Joi.object({
     lastName: Joi.string().required(),
   }),
   burialDate: Joi.date().iso(),
-  placeBurial: Joi.string().required(),
+  burialPlace: Joi.string().required(),
   sacraments: Joi.string().required(),
   bookNumber: Joi.number().required(),
   pageNumber: Joi.number().required(),

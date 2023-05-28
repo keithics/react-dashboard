@@ -21,8 +21,8 @@ export default function Settings() {
       formData.append(valuesKey, form.values[valuesKey]);
     }
 
-    formData.delete("logo");
-    formData.delete("currentPriestSignature");
+    formData.delete('logo');
+    formData.delete('currentPriestSignature');
 
     formData.append('logo', form.values.logo);
     formData.append('currentPriestSignature', form.values.currentPriestSignature);

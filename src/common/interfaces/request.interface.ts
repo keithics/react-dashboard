@@ -1,17 +1,17 @@
 export interface GetParamsInterface {
-    params: {
-        id: string;
-    };
+  params: {
+    id: string;
+  };
 }
 
 export interface PaginationInterface {
-    params: {
-        page: string;
-    };
+  params: {
+    page: string;
+  };
 }
 
 export interface ResponseInterface<T> {
-    currenPage: number;
-    docs: T[];
-    totalPages: number;
+  currenPage: number;
+  docs: T[];
+  totalPages: number;
 }

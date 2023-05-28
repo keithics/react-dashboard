@@ -1,41 +1,58 @@
-import {LoaderFunctionArgs} from '@remix-run/router/utils';
-import {crudThunks} from 'common/crud/crud.thunks';
+import { LoaderFunctionArgs } from '@remix-run/router/utils';
+import CrudForm from 'common/crud/crud.form';
+import { CrudContextInterface } from 'common/crud/crud.interface';
+import { crudThunks } from 'common/crud/crud.thunks';
 import Table from 'common/table/table';
-import {useBasePath} from 'lib/route-handle';
-import BaptismalForm from 'pages/baptismal/baptismal.form';
-import {deathDefault} from 'pages/death/death.default';
-import {DeathInterface} from 'pages/death/death.interface';
-import React from 'react';
-import {RouteObject} from 'react-router-dom';
+import { deathDefault } from 'pages/death/death.default';
+import deathFields from 'pages/death/death.fields';
+import { DeathInterface } from 'pages/death/death.interface';
+import DeathItem from 'pages/death/death.item';
+import { deathSchema } from 'pages/death/death.schema';
+import React, { createContext } from 'react';
+import { RouteObject } from 'react-router-dom';
+
+const name = '/death'; // front-end path
+const url = '/certificates/death'; // backend path
+const headers = ['Name', 'Burial Date', 'Created', 'Last Updated', 'Print', 'Delete'];
+export const DeathContext = createContext<CrudContextInterface<DeathInterface>>({ url });
+
 
 export const deathRoutes = (): RouteObject[] => {
-  const {get,add,remove,update,page} = crudThunks<DeathInterface>({url:'certificates/death',defaultValue:deathDefault})
-  const headers = ["firstName","LastName"]
+  const { get, page, add, update, remove } = crudThunks<DeathInterface>({ url, defaultValue: deathDefault });
+
   const common = {
     loader: async (params: LoaderFunctionArgs) => get(params),
     handle: {
-      basePath: `/death`,
+      basePath: name,
     },
   };
 
+  const Form = <CrudForm redirectUrl={name} add={add} update={update} fields={deathFields} schema={deathSchema} />;
+
   return [
     {
-      path: `death/:page?`,
-      id: 'death',
+      path: `${name}/:page?`,
+      id: name,
       loader: (params: LoaderFunctionArgs) => page(params),
-      element: <Table path="death" title="Death Certifications" headers={headers} />,
+      element: (
+        <DeathContext.Provider value={{ url, remove }}>
+          <Table path={name} title="Death Certifications" headers={headers}>
+            <DeathItem />
+          </Table>
+        </DeathContext.Provider>
+      ),
       handle: {
-        basePath: `/death`,
+        basePath: name,
       },
     },
     {
-      path: `death/edit/:id`,
-      element: <BaptismalForm />,
-    //  ...common,
+      path: `${name}/edit/:id`,
+      element: Form,
+      ...common,
     },
     {
-      path: `death/new`, // react router dom v6 doesnt support regex paths
-      element: <BaptismalForm />,
+      path: `${name}/new`, // react router dom v6 doesnt support regex paths
+      element: Form,
       ...common,
     },
   ];

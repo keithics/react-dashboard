@@ -1,4 +1,4 @@
-import {IconCross, IconDroplet, IconFlame} from '@tabler/icons';
+import { IconCross, IconDroplet, IconFlame } from '@tabler/icons';
 
 export const navbarMenu = [
   { link: 'baptismal', label: 'Baptismal Certificates', icon: IconDroplet },

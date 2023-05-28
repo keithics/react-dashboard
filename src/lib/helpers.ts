@@ -50,3 +50,7 @@ export function getPrintLink(type: string, id: string): string {
   const link = `${getApiUrl()}/certificates/birth/print/${id}/${type}/?auth_token=${token}`;
   return link;
 }
+
+export function hasProp<T>(obj: any, prop: string): obj is T {
+  return obj.hasOwnProperty(prop);
+}

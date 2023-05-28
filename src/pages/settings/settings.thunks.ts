@@ -1,4 +1,4 @@
-import {getSilentFetch, postFetch} from 'request/request';
+import { getSilentFetch, postFetch } from 'request/request';
 
 export const getSettings = async function () {
   return await getSilentFetch(`/settings`);
