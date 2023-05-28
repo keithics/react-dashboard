@@ -16,7 +16,7 @@ import { getToken } from 'lib/cookie.helper';
  * @param url - url of the request
  * @param saveMessage save message texts
  */
-export const getFetch = (url: string, saveMessage = 'Saved'): Promise<any> => {
+export const getFetch = <T>(url: string, saveMessage = 'Saved'): Promise<T> => {
   return fetchRequest(url, null, 'get', true, saveMessage);
 };
 
@@ -42,7 +42,7 @@ export const postFetch = (url: string, data: unknown | null, saveMessage = 'Save
  * @param url - url of the request
  * @param data - post body data
  */
-export const postSilentFetch = (url: string, data: unknown | null): Promise<any> => {
+export const postSilentFetch = <T,U>(url: string, data:T): Promise<U> => {
   return fetchRequest(url, data, 'post', false);
 };
 
@@ -93,9 +93,9 @@ export const deleteSilentFetch = (url: string): Promise<any> => {
  * @param dispatchSaveMessage - display save message
  * @param saveMessage = save message texts, default is "Saved"
  */
-const fetchRequest = (
+const fetchRequest = <T>(
   url: string,
-  formData = null,
+  formData:T,
   httpMethod: string | null = null,
   dispatchSaveMessage = true,
   saveMessage: string | null = null
@@ -123,6 +123,7 @@ const fetchRequest = (
       Authorization: `Bearer ${token}`,
       ...contentTypeJson,
     },
+    // @ts-ignore
     body: data,
   })
     .then((response) => {

@@ -10,7 +10,7 @@ import { baptismalSchema } from 'pages/baptismal/baptismal.schema';
 import { addBirth, updateBirth } from 'pages/baptismal/baptismal.thunks';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
-export default function BaptismalForm() {
+export default function DeathForm() {
   const navigate = useNavigate();
   const data = useLoaderData() as BaptismalInterface;
   const form = useForm<BaptismalInterface>({

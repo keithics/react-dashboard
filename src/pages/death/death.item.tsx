@@ -7,7 +7,7 @@ import { BaptismalResponseInterface } from 'pages/baptismal/baptismal.interface'
 import { deleteBirth } from 'pages/baptismal/baptismal.thunks';
 import { Link, useRevalidator } from 'react-router-dom';
 
-function BaptismalItem({ data, basePath }: { data: BaptismalResponseInterface; basePath: string }) {
+function DeathItem({ data, basePath }: { data: BaptismalResponseInterface; basePath: string }) {
   const revalidate = useRevalidator();
   const openDeleteModal = (id: string) =>
     openConfirmModal({
@@ -56,4 +56,4 @@ function BaptismalItem({ data, basePath }: { data: BaptismalResponseInterface; b
   );
 }
 
-export default BaptismalItem;
+export default DeathItem;

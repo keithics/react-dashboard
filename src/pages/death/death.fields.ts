@@ -7,7 +7,7 @@ const fields: FormGeneratorInterface[] = [
   { name: 'age' },
   { name: 'survivors', type: FormType.PERSON, span: 12 },
   { name: 'burialDate', type: FormType.DATE },
-  { name: 'placeBurial', span: 12 },
+  { name: 'burialPlace', span: 12 },
   { name: 'sacraments'},
   { name: 'celebrantPriest', type: FormType.PERSON, span: 12 },
   { name: 'bookNumber', type: FormType.NUMBER },

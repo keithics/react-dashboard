@@ -10,7 +10,7 @@ export interface DeathInterface {
   survivors: PersonInterface;
   burialDate: Date;
   readonly dateBurialString: PrettyDateInterface;
-  placeBurial: string;
+  burialPlace: string;
   sacraments: string;
   bookNumber: number;
   pageNumber: number;

@@ -1,8 +1,9 @@
 import App from 'App';
 import {RootBoundary} from 'components/errors/root-boundary';
 import {getToken} from 'lib/auth';
-import {baptismalRoutes} from 'pages/baptismal/baptismal-routes';
+import {baptismalRoutes} from 'pages/baptismal/baptismal.routes';
 import {BaptismalConfirmation} from 'pages/baptismal/baptismal.interface';
+import {deathRoutes} from 'pages/death/death.routes';
 import Settings from 'pages/settings/settings';
 import {getSettings} from 'pages/settings/settings.thunks';
 import Login from 'pages/user/login';
@@ -18,6 +19,7 @@ export const router = createBrowserRouter([
     children: [
       ...baptismalRoutes(BaptismalConfirmation.BAPTISMAL),
       ...baptismalRoutes(BaptismalConfirmation.CONFIRMATION),
+      ...deathRoutes(),
       {
         path: `settings`,
         loader: () => getSettings(),

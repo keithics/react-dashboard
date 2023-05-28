@@ -6,24 +6,6 @@ export enum BaptismalConfirmation {
   CONFIRMATION = 'confirmation',
 }
 
-export interface BaptismalParams {
-  params: {
-    id: string;
-  };
-}
-
-export interface BaptismalPaginationParams {
-  params: {
-    page: string;
-  };
-}
-
-export interface BaptismalResponseInterface {
-  currenPage: number;
-  docs: BaptismalInterface[];
-  totalPages: number;
-}
-
 export interface BaptismalInterface {
   readonly _id?: string;
   firstName: string;
