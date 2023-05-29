@@ -1,20 +1,6 @@
 import Joi from 'joi';
-import { PersonInterface } from '../../common/interfaces/person.interface';
-import { PrettyDateInterface } from '../../common/interfaces/pretty-date.interface';
 
 export const marriageSchema = Joi.object({
-  // firstName: Joi.string().required(),
-  // lastName: Joi.string().required(),
-  // address: Joi.string().required(),
-  // age: Joi.string().required(),
-  // survivors: Joi.object({
-  //   firstName: Joi.string().required(),
-  //   lastName: Joi.string().required(),
-  // }),
-  // burialDate: Joi.date().iso(),
-  // burialPlace: Joi.string().required(),
-  // sacraments: Joi.string().required(),
-
   bride: Joi.object({
     firstName: Joi.string().required(),
     lastName: Joi.string().required(),

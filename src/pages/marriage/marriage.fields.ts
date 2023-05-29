@@ -1,6 +1,4 @@
 import { FormGeneratorInterface, FormType } from 'components/form-generator/form-generator.interface';
-import { PersonInterface } from '../../common/interfaces/person.interface';
-import { PrettyDateInterface } from '../../common/interfaces/pretty-date.interface';
 
 const marriageFields: FormGeneratorInterface[] = [
 
