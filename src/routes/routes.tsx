@@ -9,6 +9,7 @@ import { getSettings } from 'pages/settings/settings.thunks';
 import Login from 'pages/user/login';
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
+import { marriageRoutes } from '../pages/marriage/marriage.routes';
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
       ...baptismalRoutes(BaptismalConfirmation.BAPTISMAL),
       ...baptismalRoutes(BaptismalConfirmation.CONFIRMATION),
       ...deathRoutes(),
+      ...marriageRoutes(),
       {
         path: `settings`,
         loader: () => getSettings(),
