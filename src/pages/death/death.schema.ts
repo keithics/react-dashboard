@@ -9,6 +9,10 @@ export const deathSchema = Joi.object({
     firstName: Joi.string().required(),
     lastName: Joi.string().required(),
   }),
+  survivors2: Joi.object({
+    firstName: Joi.string().allow(''),
+    lastName: Joi.string().allow(''),
+  }),
   burialDate: Joi.date().iso(),
   burialPlace: Joi.string().required(),
   sacraments: Joi.string().required(),

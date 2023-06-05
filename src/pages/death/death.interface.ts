@@ -8,6 +8,7 @@ export interface DeathInterface {
   address: string;
   age: string;
   survivors: PersonInterface;
+  survivors2: PersonInterface;
   burialDate: Date;
   readonly dateBurialString: PrettyDateInterface;
   burialPlace: string;

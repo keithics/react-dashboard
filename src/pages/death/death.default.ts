@@ -10,6 +10,10 @@ export const deathDefault: DeathInterface = {
     firstName: '',
     lastName: '',
   },
+  survivors2: {
+    firstName: '',
+    lastName: '',
+  },
   burialDate: new Date(),
   burialPlace: '',
   sacraments: '',
