@@ -41,9 +41,9 @@ function BaptismalItem({ data, basePath }: { data: ResponseInterface<BaptismalIn
           <td>{friendlyDate(row.updatedAt!)}</td>
           <td width={20}>
             <ActionIcon color="green">
-              {/*<ActionIcon target="_blank" component="a" href={getPrintLink('baptismal', row._id as string)}>*/}
+              <ActionIcon target="_blank" component="a" href={getPrintLink('baptismal', row._id as string)}>
                 <IconPrinter size={18} />
-              {/*</ActionIcon>*/}
+              </ActionIcon>
             </ActionIcon>
           </td>
           <td width={20}>

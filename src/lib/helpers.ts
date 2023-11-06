@@ -42,7 +42,7 @@ export function getUserData(): any {
 }
 
 export function getApiUrl(): string {
-  return import.meta.env.VITE_REACT_APP_API;
+  return '//' + window.location.hostname + ':8081';
 }
 
 export function getPrintLink(type: string, id: string): string {

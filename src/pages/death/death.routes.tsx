@@ -36,7 +36,7 @@ export const deathRoutes = (): RouteObject[] => {
       loader: (params: LoaderFunctionArgs) => page(params),
       element: (
         <DeathContext.Provider value={{ url, remove }}>
-          <Table path={name} title="Death Certifications" headers={headers}>
+          <Table path={name} title="Death Certificates" headers={headers}>
             <DeathItem />
           </Table>
         </DeathContext.Provider>

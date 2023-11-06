@@ -7,7 +7,7 @@ export function getToken(): string | undefined {
 }
 
 export function setCookieToken(token: string) {
-  Cookies.set(cookieName, token, { expires: 1, secure: true, sameSite: 'strict' });
+  Cookies.set(cookieName, token, { expires: 1});
 }
 
 export function clearAllData() {
